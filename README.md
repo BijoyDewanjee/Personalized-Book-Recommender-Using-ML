@@ -1,6 +1,8 @@
 # Personalized-Book-Recommender-Using-ML
 
-An end-to-end machine learning-based book recommendation system that suggests books based on user preferences. This project uses intelligent recommendation techniques to provide personalized reading suggestions through an interactive  Streamlit web application .This project builds a recommendation system that helps users discover books tailored to their interests. It uses machine learning methods such as collaborative filtering and content based filtering.
+## Project Overview
+
+This project is an end-to-end machine learning-based book recommendation system that suggests personalized books based on user preferences. It implements a complete MLOps pipeline, including data ingestion, validation, transformation, and model training. The system uses collaborative filtering techniques to generate recommendations and is deployed through an interactive Streamlit web application.
 
 ## Features
 
@@ -11,9 +13,29 @@ An end-to-end machine learning-based book recommendation system that suggests bo
 * Docker support for deployment
 * AWS EC2 deployment ready
 
-## Project Structure
 
-<pre class="overflow-visible! px-0!" data-start="863" data-end="1005"><div class="relative w-full mt-4 mb-1"><div class=""><div class="relative"><div class="h-full min-h-0 min-w-0"><div class="h-full min-h-0 min-w-0"><div class="border border-token-border-light border-radius-3xl corner-superellipse/1.1 rounded-3xl"><div class="h-full w-full border-radius-3xl bg-token-bg-elevated-secondary corner-superellipse/1.1 overflow-clip rounded-3xl lxnfua_clipPathFallback"><div class="pointer-events-none absolute end-1.5 top-1 z-2 md:end-2 md:top-1"></div><div class="w-full overflow-x-hidden overflow-y-auto pe-11 pt-3"><div class="relative z-0 flex max-w-full"><div id="code-block-viewer" dir="ltr" class="q9tKkq_viewer cm-editor z-10 light:cm-light dark:cm-light flex h-full w-full flex-col items-stretch ͼ5 ͼj"><div class="cm-scroller"><div class="cm-content q9tKkq_readonly"><span>├── config.yaml</span><br/><span>├── entity</span><br/><span>├── config</span><br/><span>│   └── configuration.py</span><br/><span>├── components</span><br/><span>├── pipeline</span><br/><span>├── main.py</span><br/><span>├── app.py</span><br/><span>├── requirements.txt</span></div></div></div></div></div></div></div></div></div></div></div></div></pre>
+## 📂 Project Structure
+
+```
+├── config.yaml
+├── books_recommender/
+│   ├── components/
+│   │   ├── stage_00_data_ingestion.py
+│   │   ├── stage_01_data_validation.py
+│   │   ├── stage_02_data_transformation.py
+│   │   ├── stage_03_model_trainer.py
+│   ├── pipeline/
+│   │   └── training_pipeline.py
+│   ├── config/
+│   ├── entity/
+│   ├── constant/
+│   ├── logger/
+│   ├── exception/
+├── app.py
+├── main.py
+├── requirements.txt
+├── Dockerfile
+```
 
 ## Workflow
 
@@ -24,7 +46,8 @@ An end-to-end machine learning-based book recommendation system that suggests bo
 5. Streamlit application integration
 6. Deployment using Docker and AWS
 
-## Installation and Setup
+
+## 🛠️Installation and Setup
 
 ### Step 1 Create Conda Environment
 
@@ -47,7 +70,7 @@ streamlit run app.py
 
 ---
 
-## Docker Deployment
+## 🐳Docker Deployment
 
 ### Step 1 Launch EC2 Instance
 
@@ -116,6 +139,73 @@ docker rm <container_id>
 
 ---
 
+## 🚀 Docker Hub Workflow
+
+This section demonstrates how to push your Docker image to Docker Hub and run it from anywhere.
+
+---
+
+### 🔐 Step 1: Login to Docker Hub
+
+```
+docker login
+```
+
+---
+
+### 🏷️ Step 2: Tag the Docker Image
+
+```
+docker tag book-recommender:latest bijoydewanjee/book-recommender:latest
+```
+
+---
+
+### 📤 Step 3: Push Image to Docker Hub
+
+```
+docker push bijoydewanjee/book-recommender:latest
+```
+
+---
+
+### 📥 Step 4: Pull Image from Docker Hub
+
+```
+docker pull bijoydewanjee/book-recommender:latest
+```
+
+---
+
+### ▶️ Step 5: Run Container
+
+```
+docker run -d -p 8501:8501 bijoydewanjee/book-recommender:latest
+```
+
+---
+
+### 🧹 Step 6: Remove Local Image (Optional)
+
+```
+docker rmi bijoydewanjee/book-recommender:latest
+```
+
+---
+
+## 🌐 Access the Application
+
+Open your browser and visit:
+
+```
+http://<your-ec2-public-ip>:8501
+
+http://3.224.135.37:8501
+
+```
+
+![1776085934959](image/README/1776085934959.png)
+
 ## Technology Stack
 
 * Python
@@ -125,8 +215,6 @@ docker rm <container_id>
 * Streamlit
 * Docker
 * AWS EC2
-
----
 
 # Author
 
